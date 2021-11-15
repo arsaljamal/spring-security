@@ -1,13 +1,13 @@
-package com.arsal.security.app.resturantservice;
+package com.arsal.security.app.restaurantservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResturantServiceApplication {
+public class RestaurantServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ResturantServiceApplication.class, args);
+		SpringApplication.run(RestaurantServiceApplication.class, args);
 	}
 
 }

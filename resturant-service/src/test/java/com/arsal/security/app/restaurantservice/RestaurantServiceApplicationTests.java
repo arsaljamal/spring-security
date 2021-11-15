@@ -1,10 +1,10 @@
-package com.arsal.security.app.resturantservice;
+package com.arsal.security.app.restaurantservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResturantServiceApplicationTests {
+class RestaurantServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
