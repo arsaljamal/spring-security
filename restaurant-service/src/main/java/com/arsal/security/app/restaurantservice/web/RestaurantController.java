@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping(path = "/restaurant")
 public class RestaurantController {
 
     private RestaurantService restaurantService;
@@ -23,24 +23,24 @@ public class RestaurantController {
         return restaurantService.addRestaurant(restaurantDto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(path = "/{id}")
     public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody RestaurantDto restaurantDto) {
         return restaurantService.updateRestaurant(id, restaurantDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path = "/{id}/")
     @ResponseStatus(HttpStatus.RESET_CONTENT)
-    public void deleteRestaurant(Long id) {
+    public void deleteRestaurant(@PathVariable Long id) {
         restaurantService.deleteRestaurant(id);
     }
 
-    @GetMapping("/{id}")
-    public Restaurant getRestaurant(@PathVariable Long id) {
-        return restaurantService.getRestaurant(id).
+    @GetMapping(path = "/get/{restId}/")
+    public Restaurant getRestaurant(@PathVariable(value = "restId") Long restId) {
+        return restaurantService.getRestaurant(restId).
                 orElseThrow(() -> new NoSuchElementException("No such Restaurant!"));
     }
 
-    @GetMapping
+    @GetMapping(path = "/list")
     public List<Restaurant> getAllRestaurant() {
         return restaurantService.getAllRestaurant();
     }
