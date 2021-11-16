@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}"lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container main-content">
+        <h3>Restaurant View</h3>
+        <form method="post" action="#" th:action="${restaurant != null} ? '/restaurant/'+${restaurant.id} : '/restaurant'" th:object="${restaurantDto}">
+            <div class="form-row">
+                <div class="col">
+                    <input th:id="name" th:name="name" type="text" class="form-control" placeholder="Name" th:value="${restaurant != null} ? ${restaurant.name}"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input th:id="address" th:name="address" type="text" class="form-control" placeholder="Email Address" th:value="${restaurant != null} ? ${restaurant.address}"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input th:id="location" th:name="location" type="text" class="form-control" placeholder="location" th:value="${restaurant != null} ? ${restaurant.location}"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <a th:href="@{/restaurant}">Return to All Restaurants</a>
+    </div>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script th:src="@{/js/table.js}"></script>
+</div>
+</body>
+</html>
