@@ -4,20 +4,29 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class RestaurantUserPrincipal implements UserDetails {
 
     private User user;
+    private List<AuthGroup> authGroupList;
 
-    public RestaurantUserPrincipal(User user) {
+    public RestaurantUserPrincipal(User user, List<AuthGroup> authGroupList) {
         this.user = user;
+        this.authGroupList = authGroupList;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        if(authGroupList == null) {
+            return Collections.emptyList();
+        }
+
+        Set<SimpleGrantedAuthority> simpleGrantedAuthoritySet = new HashSet<>();
+        authGroupList.forEach(authGroup -> {
+            simpleGrantedAuthoritySet.add(new SimpleGrantedAuthority(authGroup.getAuthGroup()));
+        });
+        return simpleGrantedAuthoritySet;
     }
 
     @Override
