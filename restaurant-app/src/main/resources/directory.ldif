@@ -1,0 +1,51 @@
+dn: dc=arsal,dc=com
+objectclass: top
+objectclass: domain
+objectclass: extensibleObject
+dc: arsal
+o: Arsal
+
+dn: ou=people,dc=arsal,dc=com
+objectclass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=arsal,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+dn: uid=arsal,ou=people,dc=arsal,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Arsal Jamal
+sn: Jamal
+givenName: Arsal
+mail: arsal@jamal.com
+uid: arsal
+userPassword: {SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g=
+
+dn: uid=jamal,ou=people,dc=arsal,dc=com
+objectClass: inetOrgPerson
+cn: Jamal Jamal
+sn: jamal
+givenName: Jamal
+mail: jamal@jamal.com
+uid: jamal
+userPassword: {SHA}iEPX+SQWIR3p67lj/0zigSWTKHg=
+
+dn: cn=admin,ou=groups,dc=arsal,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: admins
+uniqueMember: uid=arsal,ou=people,dc=arsal,dc=com
+
+dn: cn=user,ou=groups,dc=arsal,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: users
+uniqueMember: uid=arsal,ou=people,dc=arsal,dc=com
+uniqueMember: uid=jamal,ou=people,dc=arsal,dc=com
+
