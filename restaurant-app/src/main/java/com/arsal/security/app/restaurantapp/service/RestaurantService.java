@@ -20,7 +20,11 @@ public class RestaurantService {
     @Value("${restaurant.service.url}")
     private String restaurantServiceUrl;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public RestaurantService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public Restaurant addRestaurant(RestaurantDto restaurantDto) {
         String url = restaurantServiceUrl + RESTAURANT;
