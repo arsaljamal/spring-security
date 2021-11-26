@@ -29,6 +29,12 @@ public class RestaurantController {
         return "index";
     }
 
+    @GetMapping(value = "/login")
+    public String getLoginPage(Model model) { return "login";}
+
+    @GetMapping(value = "/logout-success")
+    public String getLogoutPage(Model model) {return "logout";}
+
     @GetMapping(value = "/restaurant")
     @PreAuthorize("hasRole('ROLE_USER')")
     public String getRestaurants(Model model) {
